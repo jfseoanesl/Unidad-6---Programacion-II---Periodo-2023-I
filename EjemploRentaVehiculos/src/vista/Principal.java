@@ -29,9 +29,9 @@ public class Principal {
 //        IRenta  listRentados = new MapaVehiculo();
 //        menuOpciones(listRentados);
 
-//      JFPrincipal formPrincipal = new JFPrincipal();
+      JFPrincipal formPrincipal = new JFPrincipal();
         
-        JDRegistro formRegistro = new JDRegistro(null, "Registro de alquileres", true);
+
         
     }
     

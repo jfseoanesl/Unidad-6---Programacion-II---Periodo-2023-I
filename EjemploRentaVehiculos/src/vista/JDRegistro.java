@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -58,7 +60,9 @@ public class JDRegistro extends JDialog {
     private void panelBotones() {
 
         this.btnGuardar = new JButton("Guardar");
+        this.btnGuardar.addActionListener(new clickBotonGuardar());
         this.btnCancelar = new JButton("Cancelar");
+        this.btnCancelar.addActionListener(new clickBotonCancelar());
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(2, 1, 5, 5));
@@ -99,7 +103,8 @@ public class JDRegistro extends JDialog {
         this.txtFechaDevolucion.setValue(new Date());
         
         this.cmbTipoVehiculo = new JComboBox();
-        this.cmbTipoVehiculo.addItem("Automovil");
+        this.cmbTipoVehiculo.addActionListener(new clickComboTipo());
+        this.cmbTipoVehiculo.addItem("Autobus");
         this.cmbTipoVehiculo.addItem("Tractor");
         
 
@@ -135,5 +140,46 @@ public class JDRegistro extends JDialog {
         this.contenedor.add(panel, BorderLayout.CENTER);
 
     }
+    
+    class clickBotonGuardar implements ActionListener {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    
+    }
+    
+    class clickBotonCancelar implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+        }
+    
+    }
+    
+    class clickComboTipo implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            
+            activarComponentes();
+        }
+    
+    }
+    
+    public void activarComponentes(){
+        String selected = this.cmbTipoVehiculo.getSelectedItem().toString();
+        boolean tipo = selected.equals("Autobus");
+        
+        this.txtPrecioKm.setEnabled(!tipo);
+        this.txtKmRenta.setEnabled(!tipo);
+        this.txtKmDevolucion.setEnabled(!tipo);
+        
+        this.txtPrecioDia.setEnabled(tipo);
+        this.txtFechaRenta.setEnabled(tipo);
+        this.txtFechaDevolucion.setEnabled(tipo);
+    
+    }
 }
