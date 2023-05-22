@@ -8,6 +8,8 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.Date;
 import javax.swing.BorderFactory;
@@ -15,7 +17,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -23,7 +27,7 @@ import javax.swing.JTextField;
  *
  * @author Jairo F
  */
-public class JDRegistro extends JDialog{
+public class JDRegistro extends JDialog implements ActionListener{
     
     private Container contenedor;
     
@@ -37,7 +41,7 @@ public class JDRegistro extends JDialog{
     
     private JComboBox cmbTipo;
 
-    public JDRegistro(Frame owner, String title, boolean modal) {
+    public JDRegistro(JFrame owner, String title, boolean modal) {
         super(owner, title, modal);
         this.initComponentes();
         this.pack();
@@ -61,7 +65,9 @@ public class JDRegistro extends JDialog{
         panelGrid.setLayout(new GridLayout(2,1,5,5));
         
         this.btnguardar= new JButton("   Guardar   ");
+        this.btnguardar.addActionListener(this);
         this.btnCancelar= new JButton("  Cancelar  ");
+        this.btnCancelar.addActionListener(this);
         
         panelGrid.add(this.btnguardar);
         panelGrid.add(this.btnCancelar);
@@ -103,6 +109,7 @@ public class JDRegistro extends JDialog{
         this.txtFechaDev.setValue(new Date());
         
         this.cmbTipo = new JComboBox();
+        this.cmbTipo.addActionListener(this);
         this.cmbTipo.addItem("Autobus");
         this.cmbTipo.addItem("Tractor");
         
@@ -130,11 +137,42 @@ public class JDRegistro extends JDialog{
         panelGrid.add(this.lbFechaDev);
         panelGrid.add(this.txtFechaDev);
         
-        JPanel panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panelGrid.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-        panel.add(panelGrid);
-        this.contenedor.add(panel, BorderLayout.CENTER);
+        this.contenedor.add(panelGrid, BorderLayout.CENTER);
+    
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        
+        if(e.getSource()==this.btnguardar){
+            JOptionPane.showMessageDialog(this, "Click sobre guardar");
+        
+        }
+        else if(e.getSource()==this.btnCancelar){
+            JOptionPane.showMessageDialog(this, "Click sobre cancelar");
+        }
+        else{
+            //JOptionPane.showMessageDialog(this, "Click sobre combo");
+            this.activarComponentes();
+        }
+        
+        
+    }
+    
+    private void activarComponentes(){
+        
+        String select = this.cmbTipo.getSelectedItem().toString();
+        boolean activado = select.equals("Tractor");
+        
+        this.txtPrecioKm.setEnabled(!activado);
+        this.txtkmRenta.setEnabled(!activado);
+        this.txtKmDev.setEnabled(!activado);
+        
+        this.txtPrecioDia.setEnabled(activado);
+        this.txtFechaRenta.setEnabled(activado);
+        this.txtFechaDev.setEnabled(activado);
     
     }
     

@@ -26,7 +26,8 @@ public class Principal {
 
         
         JFPrincipal principal = new JFPrincipal();
-        JDRegistro registro = new JDRegistro(null, "Registro de vehiculo", true);
+      
+        
         //List<Vehiculo> listRentados = new ArrayList();
         // Map <String, Vehiculo> listRentados = new HashMap();
 //          LogicRenta logica = new LogicRenta();
