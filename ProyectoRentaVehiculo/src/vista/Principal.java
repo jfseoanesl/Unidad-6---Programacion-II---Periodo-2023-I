@@ -24,26 +24,26 @@ public class Principal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-
-        JFPrincipal principal = new JFPrincipal();
-        //List<Vehiculo> listRentados = new ArrayList();
-        // Map <String, Vehiculo> listRentados = new HashMap();
-//        LogicRenta logica = new LogicRenta();
-
-//        System.out.println(" ** RENTA DE VEHICULOS ** ");
-//        Vehiculo v = rentaVehiculo();
-//        listRentados.add(v);
-//
-//        Vehiculo v2 = rentaVehiculo();
-//        listRentados.add(v2);
-//
-//        Vehiculo v3 = rentaVehiculo();
-//        listRentados.add(v3);
-//
-//        imprimirList(listRentados);
-//        menuOpciones(logica);
+        
+        run(TipoVista.GUI);
+        
+         
     }
 
+    public static void run(TipoVista vista){
+        switch(vista){
+            
+            case CONSOLA: 
+                          LogicRenta logica = new LogicRenta();
+                          menuOpciones(logica);
+                          break;
+            case GUI:     
+                          JFPrincipal principal = new JFPrincipal();
+            
+        }
+    }
+    
+    
     public static void imprimirList(List<Vehiculo> list) {
         System.out.println("\n ** INFORME DE VEHICULOS RENTADOS ** ");
         for (Vehiculo v : list) {
