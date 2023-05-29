@@ -13,7 +13,7 @@ import persistencia.Archivable;
 public abstract class Vehiculo implements Archivable {
     
     private String placa;
-    private boolean estado;
+    private boolean estado; // true - > alquilado , false -> disponible
 
     public Vehiculo() {
     }
@@ -51,13 +51,15 @@ public abstract class Vehiculo implements Archivable {
         this.estado = estado;
     }
     
+    
     public abstract double calcularImporteRenta();
     public abstract String getInfo();
 
     @Override
     public String toString() {
-        return "placa:" + placa +" || " +  this.getInfo(); 
+        return  "placa=" + placa + this.getInfo();
     }
+    
     
     
 }

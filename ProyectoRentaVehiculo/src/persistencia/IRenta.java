@@ -13,7 +13,9 @@ import modelo.Vehiculo;
  * @author Jairo F
  */
 public interface IRenta {
-    void registrarVehiculo(Vehiculo v) throws IOException;
-    Vehiculo buscarVehiculoPorPlaca(String placa) throws IOException;
-    List<Vehiculo> listRentados() throws IOException;
+    
+    void registraVehiculo(Vehiculo v) throws IOException;
+    Vehiculo buscarVehiculo (String placa) throws IOException;
+    List<Vehiculo> informeRenta() throws IOException;
+    
 }

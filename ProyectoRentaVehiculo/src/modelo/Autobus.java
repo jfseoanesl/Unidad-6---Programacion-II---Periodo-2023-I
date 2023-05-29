@@ -67,27 +67,42 @@ public class Autobus extends Vehiculo {
     }
     
     @Override
-    public double calcularImporteRenta(){
-        
-        return (this.kmDevolucion - this.kmRenta) * this.precioKm;
-    
-    }
+   public double calcularImporteRenta(){
+       
+       return this.precioKm * (this.kmDevolucion - this.kmRenta);
+   
+   }  
 
     @Override
     public String getInfo() {
-        return " " + "Precio KM="+ this.precioKm + 
-               " || " + "Km Renta=" + this.kmRenta + 
-               " || " + "Km Devolucion="+this.kmDevolucion;       
+        return " || Precio km: " + this.precioKm + 
+               " || Km renta:  " + this.kmRenta +  
+               " || Km devolucion: " + this.kmDevolucion;  
     }
     
     @Override
     public String getDataFileFormat(){
-            return this.getPlaca()+";"+
-                   "A"+";"+
-                   this.precioKm+";" +
-                   this.kmRenta+";"+
-                   this.kmDevolucion+";" +
-                   this.calcularImporteRenta();
+        
+        return this.getPlaca()+";"+
+               "A"+";"+
+               this.precioKm+";"+
+               this.kmRenta+";"+
+               this.kmDevolucion+";"+
+               this.calcularImporteRenta();
+    
+    }
+
+    @Override
+    public String[] getDataForTable() {
+       String data[] = {this.getPlaca(), 
+                        "Autobus", 
+                        String.valueOf(this.precioKm), 
+                        String.valueOf(this.kmRenta), 
+                        String.valueOf(this.kmDevolucion),
+                        "","","",
+                        String.valueOf(this.calcularImporteRenta())
+                       };
+       return data;
     }
     
 }
