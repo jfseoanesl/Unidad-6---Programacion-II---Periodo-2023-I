@@ -4,6 +4,7 @@
  */
 package persistencia;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Vehiculo;
@@ -12,7 +13,7 @@ import modelo.Vehiculo;
  *
  * @author Jairo F
  */
-public class ListaVehiculo implements IRenta {
+public class ListaVehiculo implements IRenta, Serializable {
 
     private List<Vehiculo> lista;
 

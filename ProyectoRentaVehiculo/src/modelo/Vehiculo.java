@@ -4,13 +4,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
 import persistencia.Archivable;
 
 /**
  *
  * @author Jairo F
  */
-public abstract class Vehiculo implements Archivable {
+public abstract class Vehiculo implements Archivable, Serializable {
     
     private String placa;
     private boolean estado; // true - > alquilado , false -> disponible

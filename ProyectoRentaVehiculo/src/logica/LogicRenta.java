@@ -7,6 +7,7 @@ package logica;
 import java.io.IOException;
 import java.util.List;
 import modelo.Vehiculo;
+import persistencia.ArchivoObjetos;
 import persistencia.ArchivoTexto;
 import persistencia.IRenta;
 import persistencia.ListaVehiculo;
@@ -22,8 +23,9 @@ public class LogicRenta {
 
     public LogicRenta() {
        // this.datos = new ListaVehiculo();
-        this.datos = new MapaVehiculo();
-        this.datos = new ArchivoTexto();
+       // this.datos = new MapaVehiculo();
+       this.datos = new ArchivoTexto();
+       //this.datos = new ArchivoObjetos();
     }
     
     
